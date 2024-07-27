@@ -22,6 +22,9 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask whatisGround;
     bool grounded;
 
+    [Header("Animation")]
+    Animator anim;
+
     public Transform Player;
 
     public float horizontalInput;
@@ -34,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
         rb.freezeRotation = true;
     }
 
@@ -60,6 +64,8 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
+        
+        anim.SetFloat("yVelocity", rb.velocity.y);
     }
 
     private void MyInput()
@@ -84,6 +90,8 @@ public class PlayerMovement : MonoBehaviour
         if(grounded)
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            float xzVelocityMaginitude = Mathf.Sqrt(rb.velocity.x * rb.velocity.x + rb.velocity.z * rb.velocity.z);
+            anim.SetFloat("xvelocity", xzVelocityMaginitude);
             //Debug.Log("Grounded");
         }
         else if(!grounded)
@@ -109,6 +117,8 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+
+        anim.SetBool("isJumping", !grounded);
     }
 
     private void ResetJump()
