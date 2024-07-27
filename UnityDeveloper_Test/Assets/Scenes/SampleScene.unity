@@ -193,7 +193,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6884908}
-  m_LocalRotation: {x: 0.000000021007773, y: 0.940668, z: -0.33932835, w: 0.00000005823663}
+  m_LocalRotation: {x: 0.000000009330545, y: 0.940668, z: -0.33932835, w: 0.000000025865644}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -475,7 +475,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70428519}
-  m_LocalRotation: {x: 0.000000022352955, y: 0.932544, z: -0.36105648, w: 0.00000005773367}
+  m_LocalRotation: {x: 0.000000009928005, y: 0.932544, z: -0.36105648, w: 0.000000025642255}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1354,7 +1354,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -100, y: -40}
+  m_AnchoredPosition: {x: -100, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &306333944
@@ -1609,7 +1609,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.000000032577148, y: 0.932544, z: -0.3610565, w: 0.00000008414091}
+  m_LocalRotation: {x: -2.96176e-10, y: 0.932544, z: -0.3610565, w: -7.649733e-10}
   m_LocalPosition: {x: 0.98832667, y: 6.0632854, z: 4.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6887,7 +6887,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1536299742}
-  m_LocalRotation: {x: 0.000000010522683, y: 0.92387956, z: -0.38268343, w: 0.000000025404008}
+  m_LocalRotation: {x: 0.000000023691877, y: 0.92387956, z: -0.38268343, w: 0.000000057197255}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9106,7 +9106,6 @@ GameObject:
   - component: {fileID: 919132149603880278}
   - component: {fileID: 919132149603880279}
   - component: {fileID: 919132149603880280}
-  - component: {fileID: 919132149603880281}
   - component: {fileID: 919132149603880282}
   m_Layer: 0
   m_Name: Exo Gray
@@ -9229,22 +9228,6 @@ MonoBehaviour:
   rotationDuration: 0.5
   slowMotionFactor: 0.1
   rb: {fileID: 919132149603880277}
---- !u!114 &919132149603880281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132149603880273}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8d6251408b2bfd4b93c663c2ad8f413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 543450653259175915}
-  environment: {fileID: 909295232}
-  rotationAngle: 90
-  rotationDuration: 1
 --- !u!114 &919132149603880282
 MonoBehaviour:
   m_ObjectHideFlags: 0
