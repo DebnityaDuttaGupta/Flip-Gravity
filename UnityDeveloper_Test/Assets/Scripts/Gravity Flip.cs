@@ -7,17 +7,23 @@ public class GravityFlip : MonoBehaviour
     [Header("References")]
     public Transform Environment;
     public Transform Player;
+    public Transform PlayerHead;
+    public GameObject HolographicModel;
 
     public float rotationDuration = 0.5f;
     public float slowMotionFactor = 0.1f;
 
     private bool isFlipping = false;
+    private bool isPriviewing = false;
 
     private Quaternion targetRotation;
     private BoxCollider playerCollider;
 
+    public Rigidbody rb;
+
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<BoxCollider>();
     }
 
@@ -25,31 +31,48 @@ public class GravityFlip : MonoBehaviour
     {
         if (!isFlipping)
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                StartGravityFlip(Vector3.right);
-            }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                StartGravityFlip(Vector3.left);
+                ShowHolographicFlip(Vector3.right);
             }
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                StartGravityFlip(Vector3.forward);
+                ShowHolographicFlip(Vector3.left);
             }
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                StartGravityFlip(Vector3.back);
+                ShowHolographicFlip(Vector3.forward);
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                ShowHolographicFlip(Vector3.back);
+            }
+
+            if(isPriviewing && Input.GetKeyDown(KeyCode.Return))
+            {
+                StartGravityFlip();
             }
         }
         
     }
 
-    private void StartGravityFlip(Vector3 axis)
+    private void ShowHolographicFlip(Vector3 axis)
+    {
+        isPriviewing = true;
+        
+        targetRotation = Quaternion.AngleAxis(90, axis) * Environment.rotation;
+        HolographicModel.SetActive(true);
+        
+        HolographicModel.transform.position = PlayerHead.position;
+        HolographicModel.transform.rotation = targetRotation;
+    }
+
+    private void StartGravityFlip()
     {
         isFlipping = true;
-        targetRotation = Quaternion.AngleAxis(90, axis) * Environment.rotation;
-
+        isPriviewing = false;
+        HolographicModel.SetActive(false);
+        
         playerCollider.enabled = false;
 
         StartCoroutine(RotateEnvironment(targetRotation));
@@ -61,6 +84,8 @@ public class GravityFlip : MonoBehaviour
         float elapsedTime = 0;
 
         Time.timeScale = slowMotionFactor;
+
+        rb.useGravity = false;
 
         while (elapsedTime < rotationDuration)
         {
@@ -76,6 +101,8 @@ public class GravityFlip : MonoBehaviour
         playerCollider.enabled = true;
 
         Time.timeScale = 1.0f;
+
+        rb.useGravity = true;
 
         isFlipping = false;
     }

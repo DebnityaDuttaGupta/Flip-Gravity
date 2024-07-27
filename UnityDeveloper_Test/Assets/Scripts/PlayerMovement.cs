@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatisGround;
-    bool grounded;
+    public bool grounded;
 
     [Header("Animation")]
     Animator anim;
@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         rb.freezeRotation = true;
     }
 
-    private void Update()
+    public void Update()
     {
         //ground check
         Vector3 raycastOrigin = transform.position + Vector3.up * 0.1f;
@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
     {
         MovePlayer();
         
-        anim.SetFloat("yVelocity", rb.velocity.y);
+        anim.SetFloat("yvelocity", rb.velocity.y);
     }
 
     private void MyInput()
